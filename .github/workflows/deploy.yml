@@ -53,16 +53,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       
-      - name: set lower case owner name
-        run: |
-          "OWNER_LC=$('${{ github.repository.owner }}'.toLower())" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-
       - name: no.html 생성
+        shell: cmd
         env:
           ACTIONS_STEP_DEBUG: true
           NO_HTML: ${{ secrets.NO_HTML }}
-        run: |
-          $env:NO_HTML | Out-File -FilePath src/no.html -Encoding utf8
+        run: echo %NO_HTML%>src\no.html
 
       - name: 빌드 앤 푸시
         uses: docker/build-push-action@v3
