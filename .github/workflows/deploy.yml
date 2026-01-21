@@ -56,7 +56,7 @@ jobs:
       - name: set lower case owner name
         run: echo "OWNER_LC=${OWNER,,}" >> ${GITHUB_ENV}
         env:
-          OWNER: ${{ github.repository_owner }}}
+          OWNER: ${{ github.repository_owner }}
 
       - name: no.html 생성
         env:
